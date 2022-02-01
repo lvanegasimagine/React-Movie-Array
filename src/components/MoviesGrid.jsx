@@ -5,7 +5,7 @@ import { get } from "../utils/httpClient";
 
 function MoviesGrid() {
   const [movies, setMovies] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     get("/discover/movie").then((data) => {
       setMovies(data.results);
