@@ -4,7 +4,6 @@ import styles from "../module/MovieCard.module.css";
 
 function MovieCard({ movie }) {
   const imageUrl = "https://image.tmdb.org./t/p/w300" + movie.poster_path;
-  console.log(movie);
   return (
     <Fragment>
       <li className={styles.movieCard}>
