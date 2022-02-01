@@ -2,10 +2,8 @@ import React from "react";
 import styles from "../module/App.module.css";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Link,
-  BrowserRouter,
   Routes,
 } from "react-router-dom";
 import MovieDetails from "../pages/MovieDetails";
@@ -13,7 +11,7 @@ import LandingPage from "../pages/LandingPage";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <header>
         <Link to="/"><h1 className={styles.title}>Movies</h1></Link>
       </header>
@@ -24,7 +22,7 @@ const App = () => {
           <Route path="/">404</Route>
         </Routes>
       </main>
-    </BrowserRouter>
+    </Router>
   );
 };
 

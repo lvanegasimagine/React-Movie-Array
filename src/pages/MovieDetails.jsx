@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Spinner from "../components/Spinner";
 import styles from "../module/MovieDetails.module.css";
 import { get } from "../utils/httpClient";
 
@@ -7,20 +8,21 @@ import { get } from "../utils/httpClient";
 
 function MovieDetails() {
   const { movieId } = useParams();
-
+  const [isLoading, setIsLoading] = useState(true);
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
+    setIsLoading(true)
     get("/movie/" + movieId).then(data => {
-        setMovie(data);
+      setMovie(data);
+      setIsLoading(false);
     })
   }, [movieId]);
   
-  
-  if(!movie){
-    return null;
+  if(isLoading){
+    return <Spinner/>;
   }
-  
+
   const imageUrl = "https://image.tmdb.org./t/p/w500" + movie.poster_path;
   return (
     <Fragment>
