@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import styles from "../module/MovieDetails.module.css";
 import { get } from "../utils/httpClient";
+import { getMovieImg } from "../utils/getMovieImg";
 
 // TODO: el .join permite separar los array
 
@@ -23,7 +24,7 @@ function MovieDetails() {
     return <Spinner/>;
   }
 
-  const imageUrl = "https://image.tmdb.org./t/p/w500" + movie.poster_path;
+  const imageUrl = getMovieImg(movie.poster_path,300);
   return (
     <Fragment>
       <div className={styles.detailsContainer}>
