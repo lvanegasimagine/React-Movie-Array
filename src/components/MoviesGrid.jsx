@@ -6,17 +6,13 @@ import Spinner from "./Spinner";
 import { useQuery } from "../hooks/UseQuery";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-function MoviesGrid() {
+function MoviesGrid({search}) {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   //Scroll Infinite
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-
-  const query = useQuery();
-  const search = query.get("search");
-  console.log(search);
 
   useEffect(() => {
     setIsLoading(true);
